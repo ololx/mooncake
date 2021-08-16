@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.mooncake</groupId>
+    <artifactId>mooncake</artifactId>
+    <version>${revision}${sha1}${changelist}</version>
+    <name>mooncake</name>
+    <description>
+        This is a lightweight java library for a creating software 2D-2.5D games.
+    </description>
+    <url>https://github.com/ololx/mooncake</url>
+    <inceptionYear>2021</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/ololx/mooncake/LICENSE</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Alexander A. Kropotin</name>
+            <email>ololx@icloud.com</email>
+            <roles>
+                <role>initial work</role>
+                <role>author</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <packaging>pom</packaging>
+
+    <modules>
+    </modules>
+
+    <properties>
+        <!--<project versioning-->
+        <revision>0.0.1</revision>
+        <changelist></changelist>
+        <sha1/>
+        <!--project versioning>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <github.global.server>github</github.global.server>
+        <github.maven-plugin>0.12</github.maven-plugin>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+        </dependencies>
+    </dependencyManagement>
+
+    <!--<deploy on repository-->
+    <distributionManagement>
+        <repository>
+            <id>mooncake.repository</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mooncake-repository</url>
+        </repository>
+    </distributionManagement>
+    <!--deploy on repository>-->
+
+    <build>
+        <plugins>
+            <!--<compiler-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <!--compiler>-->
+            <!--<flatten pom-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--flatten pom>-->
+            <!--<deploy on repository-->
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <altDeploymentRepository>
+                        mooncake.repository::default::file://${project.build.directory}/mooncake-repository
+                    </altDeploymentRepository>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>${github.maven-plugin}</version>
+                <configuration>
+                    <message>Maven artifacts for mooncake project ${revision}${sha1}${changelist}</message>
+                    <noJekyll>true</noJekyll>
+                    <outputDirectory>${project.build.directory}/mooncake-repository</outputDirectory>
+                    <branch>refs/heads/mooncake-repository</branch>
+                    <repositoryName>mooncake</repositoryName>
+                    <repositoryOwner>ololx</repositoryOwner>
+                    <!--<includes>
+                        <include></include>
+                    </includes>
+                    <excludes>
+                        <exclude></exclude>
+                    </excludes>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--deploy on repository>-->
+        </plugins>
+    </build>
+</project>
