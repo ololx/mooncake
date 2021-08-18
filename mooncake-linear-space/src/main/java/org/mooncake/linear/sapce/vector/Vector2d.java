@@ -1,12 +1,13 @@
 package org.mooncake.linear.sapce.vector;
 
 /**
- * @project mooncake
- * @created 2021-08-17 22:14
- * <p>
+ * The type Vector 2 d.
+ *
  * @author Alexander A. Kropotin
+ * @project mooncake
+ * @created 2021 -08-17 22:14 <p>
  */
-public class Vector2d implements Vector {
+public class Vector2d implements Vector2<Vector2d> {
 
     /**
      * The X.
@@ -65,30 +66,14 @@ public class Vector2d implements Vector {
         this.y = y;
     }
 
-    /**
-     * Gets module.
-     *
-     * @return the module
-     */
     public double getModule() {
         return Math.hypot(this.x, this.y);
     }
 
-    /**
-     * Gets normalized.
-     *
-     * @return the normalized
-     */
-    public Vector2d getNormalized() {
+    public Vector2d normalize() {
         return new Vector2d(this.x / this.getModule(), this.y / this.getModule());
     }
 
-    /**
-     * Dot product double.
-     *
-     * @param om the om
-     * @return the double
-     */
     public double dotProduct(Vector2d om) {
         return this.x * om.getX() + this.y * om.getY();
     }
@@ -110,15 +95,9 @@ public class Vector2d implements Vector {
      * @return the angle between normal
      */
     public double getAngleBetweenNormal(Vector2d om) {
-        return Math.acos(this.getNormalized().dotProduct(om.getNormalized()));
+        return Math.acos(this.normalize().dotProduct(om.normalize()));
     }
 
-    /**
-     * Rotate vector 2 d.
-     *
-     * @param angle the angle
-     * @return the vector 2 d
-     */
     public Vector2d rotate(double angle) {
         return new Vector2d(
                 (this.x * Math.cos(angle) - this.y * Math.sin(angle)),
@@ -126,12 +105,6 @@ public class Vector2d implements Vector {
         );
     }
 
-    /**
-     * Add vector 2 d.
-     *
-     * @param om the om
-     * @return the vector 2 d
-     */
     public Vector2d add(Vector2d om) {
         return new Vector2d(
                 this.x + om.getX(),
@@ -139,12 +112,6 @@ public class Vector2d implements Vector {
         );
     }
 
-    /**
-     * Add vector 2 d.
-     *
-     * @param k the k
-     * @return the vector 2 d
-     */
     public Vector2d add(double k) {
         return new Vector2d(
                 this.x + k,
@@ -152,32 +119,14 @@ public class Vector2d implements Vector {
         );
     }
 
-    /**
-     * Subtract vector 2 d.
-     *
-     * @param om the om
-     * @return the vector 2 d
-     */
     public Vector2d subtract(Vector2d om) {
         return new Vector2d(this.x - om.getX(), this.y - om.getY());
     }
 
-    /**
-     * Subtract vector 2 d.
-     *
-     * @param k the k
-     * @return the vector 2 d
-     */
     public Vector2d subtract(double k) {
         return new Vector2d(this.x - k, this.y - k);
     }
 
-    /**
-     * Multiply vector 2 d.
-     *
-     * @param om the om
-     * @return the vector 2 d
-     */
     public Vector2d multiply(Vector2d om) {
         return new Vector2d(
                 this.x * om.getX(),
@@ -185,12 +134,6 @@ public class Vector2d implements Vector {
         );
     }
 
-    /**
-     * Multiply vector 2 d.
-     *
-     * @param k the k
-     * @return the vector 2 d
-     */
     public Vector2d multiply(double k) {
         return new Vector2d(
                 this.x * k,
@@ -198,71 +141,31 @@ public class Vector2d implements Vector {
         );
     }
 
-    /**
-     * Divide vector 2 d.
-     *
-     * @param om the om
-     * @return the vector 2 d
-     */
     public Vector2d divide(Vector2d om) {
         return new Vector2d(this.x / om.getX(), this.y / om.getY());
     }
 
-    /**
-     * Divide vector 2 d.
-     *
-     * @param k the k
-     * @return the vector 2 d
-     */
     public Vector2d divide(double k) {
         return new Vector2d(this.x / k, this.y / k);
     }
 
-    /**
-     * Abs vector 2 d.
-     *
-     * @return the vector 2 d
-     */
     public Vector2d abs() {
         return new Vector2d(Math.abs(this.x), Math.abs(this.y));
     }
 
-    /**
-     * To string string.
-     *
-     * @return the string
-     */
     @Override
     public String toString() {
         return String.format("<%s, %s>", this.getX(), this.getY());
     }
 
-    /**
-     * Clone vector 2 d.
-     *
-     * @return the vector 2 d
-     */
     public Vector2d clone() {
         return new Vector2d(this.getX(), this.getY());
     }
 
-    /**
-     * Gets scaled.
-     *
-     * @param value the value
-     * @param scale the scale
-     * @return the scaled
-     */
     private double getScaled(double value, int scale) {
         return 1d * (((int) (value * scale)) / scale);
     }
 
-    /**
-     * Gets scaled.
-     *
-     * @param value the value
-     * @return the scaled
-     */
     private double getScaled(double value) {
         return this.getScaled(value, 100);
     }
