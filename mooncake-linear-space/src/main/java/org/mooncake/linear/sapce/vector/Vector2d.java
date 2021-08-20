@@ -66,12 +66,12 @@ public class Vector2d implements Vector2<Vector2d> {
         this.y = y;
     }
 
-    public double getModule() {
+    public double length() {
         return Math.hypot(this.x, this.y);
     }
 
     public Vector2d normalize() {
-        return new Vector2d(this.x / this.getModule(), this.y / this.getModule());
+        return new Vector2d(this.x / this.length(), this.y / this.length());
     }
 
     public double dotProduct(Vector2d om) {
@@ -85,7 +85,7 @@ public class Vector2d implements Vector2<Vector2d> {
      * @return the angle
      */
     public double getAngle(Vector2d om) {
-        return Math.acos(this.dotProduct(om) / (this.getModule() * om.getModule()));
+        return Math.acos(this.dotProduct(om) / (this.length() * om.length()));
     }
 
     /**

@@ -8,14 +8,7 @@ package org.mooncake.linear.sapce.vector;
  * @project mooncake
  * @created 2021 -08-17 22:13 <p>
  */
-interface Vector<V extends Vector> {
-
-    /**
-     * Gets module.
-     *
-     * @return the module
-     */
-    double getModule();
+interface Vector<V extends Vector> extends LineSegment, Directional {
 
     /**
      * Dot product double.
