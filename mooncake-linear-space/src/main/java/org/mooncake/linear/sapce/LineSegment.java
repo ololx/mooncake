@@ -1,4 +1,4 @@
-package org.mooncake.linear.sapce.vector;
+package org.mooncake.linear.sapce;
 
 /**
  * @project mooncake
