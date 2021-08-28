@@ -1,15 +1,13 @@
 package org.mooncake.linear.sapce.segment;
 
-import org.mooncake.linear.sapce.Magnitude;
-
 /**
- * The type Segment2d.
+ * The type Segment 2d.
  *
  * @author Alexander A. Kropotin
  * @project mooncake
  * @created 2021 -08-20 22:14 <p>
  */
-public class Segment2d implements LineSegment2 {
+public class Segment2d implements LineSegment2d {
 
     /**
      * The X 0.

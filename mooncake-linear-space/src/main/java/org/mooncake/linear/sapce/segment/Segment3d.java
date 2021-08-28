@@ -1,13 +1,13 @@
 package org.mooncake.linear.sapce.segment;
 
 /**
- * The type Segment 3 d.
+ * The type Segment 3d.
  *
  * @author Alexander A. Kropotin
  * @project mooncake
  * @created 2021 -08-27 20:59 <p>
  */
-public class Segment3d implements LineSegment3 {
+public class Segment3d implements LineSegment3d {
 
     /**
      * The X 0.

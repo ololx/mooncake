@@ -1,5 +1,8 @@
 package org.mooncake.linear.sapce.vector;
 
+import org.mooncake.linear.sapce.Direction;
+import org.mooncake.linear.sapce.Magnitude;
+
 /**
  * The interface Vector.
  *
@@ -8,7 +11,7 @@ package org.mooncake.linear.sapce.vector;
  * @project mooncake
  * @created 2021 -08-17 22:13 <p>
  */
-interface Vector<V extends Vector> extends LineSegment, Directional {
+interface Vector<V extends Vector> extends Magnitude, Direction {
 
     /**
      * Dot product double.

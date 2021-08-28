@@ -1,13 +1,13 @@
 package org.mooncake.linear.sapce.segment;
 
 /**
- * The interface Line segment 3.
+ * The interface Line segment 2 d.
  *
  * @author Alexander A. Kropotin
  * @project mooncake
- * @created 2021 -08-27 21:09 <p>
+ * @created 2021 -08-27 21:08 <p>
  */
-public interface LineSegment3 extends LineSegment {
+public interface LineSegment2d extends LineSegment {
 
     /**
      * Gets x 0.
@@ -24,13 +24,6 @@ public interface LineSegment3 extends LineSegment {
     double getY0();
 
     /**
-     * Gets z 0.
-     *
-     * @return the z 0
-     */
-    double getZ0();
-
-    /**
      * Gets x.
      *
      * @return the x
@@ -43,11 +36,4 @@ public interface LineSegment3 extends LineSegment {
      * @return the y
      */
     double getY();
-
-    /**
-     * Gets z.
-     *
-     * @return the z
-     */
-    double getZ();
 }

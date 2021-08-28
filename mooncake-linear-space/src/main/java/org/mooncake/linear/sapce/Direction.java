@@ -1,4 +1,4 @@
-package org.mooncake.linear.sapce.vector;
+package org.mooncake.linear.sapce;
 
 /**
  * @project mooncake
@@ -6,5 +6,5 @@ package org.mooncake.linear.sapce.vector;
  * <p>
  * @author Alexander A. Kropotin
  */
-public interface Directional {
+public interface Direction {
 }
