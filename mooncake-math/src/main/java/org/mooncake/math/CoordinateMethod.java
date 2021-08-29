@@ -1,4 +1,4 @@
-package org.mooncake.linear.sapce;
+package org.mooncake.math;
 
 /**
  * The interface Coordinate.
@@ -7,5 +7,5 @@ package org.mooncake.linear.sapce;
  * @project mooncake
  * @created 2021 -08-28 12:07 <p>
  */
-public interface Coordinate {
+public interface CoordinateMethod {
 }

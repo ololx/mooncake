@@ -1,4 +1,4 @@
-package org.mooncake.linear.sapce.vector;
+package org.mooncake.math.vector;
 
 /**
  * The type Vector 2 d.
@@ -55,6 +55,16 @@ public class Vector2d implements Vector2<Vector2d> {
      */
     public double getY() {
         return this.y;
+    }
+
+    @Override
+    public double getRadius() {
+        return 0;
+    }
+
+    @Override
+    public double getXAngle() {
+        return 0;
     }
 
     /**

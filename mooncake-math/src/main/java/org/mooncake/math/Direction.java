@@ -1,4 +1,4 @@
-package org.mooncake.linear.sapce;
+package org.mooncake.math;
 
 /**
  * @project mooncake

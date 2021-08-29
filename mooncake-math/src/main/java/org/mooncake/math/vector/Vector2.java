@@ -1,4 +1,4 @@
-package org.mooncake.linear.sapce.vector;
+package org.mooncake.math.vector;
 
 /**
  * The interface Vector 2.

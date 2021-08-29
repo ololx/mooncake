@@ -1,4 +1,4 @@
-package org.mooncake.linear.sapce;
+package org.mooncake.math;
 
 /**
  * The interface Coordinate 2 d.
@@ -7,7 +7,11 @@ package org.mooncake.linear.sapce;
  * @project mooncake
  * @created 2021 -08-28 12:08 <p>
  */
-public interface Coordinate2d extends Coordinate {
+public interface CoordinateMethod2D extends CoordinateMethod {
+
+    private static double convertPolarToCartesianX(double radius, double xAngle) {
+        return radius * Math.cos(xAngle);
+    }
 
     /**
      * Gets x.

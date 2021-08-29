@@ -1,7 +1,6 @@
-package org.mooncake.linear.sapce.vector;
+package org.mooncake.math.vector;
 
-import org.mooncake.linear.sapce.Direction;
-import org.mooncake.linear.sapce.Magnitude;
+import org.mooncake.math.CoordinateMethod;
 
 /**
  * The interface Vector.
@@ -11,7 +10,7 @@ import org.mooncake.linear.sapce.Magnitude;
  * @project mooncake
  * @created 2021 -08-17 22:13 <p>
  */
-interface Vector<V extends Vector> extends Magnitude, Direction {
+interface Vector<V extends Vector> extends CoordinateMethod {
 
     /**
      * Dot product double.

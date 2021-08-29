@@ -1,4 +1,6 @@
-package org.mooncake.linear.sapce.segment;
+package org.mooncake.math.segment;
+
+import org.mooncake.math.CoordinateMethod2D;
 
 /**
  * The type Segment 2d.
@@ -7,7 +9,7 @@ package org.mooncake.linear.sapce.segment;
  * @project mooncake
  * @created 2021 -08-20 22:14 <p>
  */
-public class Segment2d implements LineSegment2d {
+public class Segment2d<P extends CoordinateMethod2D> implements LineSegment2D<P> {
 
     /**
      * The X 0.
@@ -42,6 +44,16 @@ public class Segment2d implements LineSegment2d {
         this.y0 = yA;
         this.x = xB;
         this.y = yB;
+    }
+
+    @Override
+    public P getA() {
+        return null;
+    }
+
+    @Override
+    public P getB() {
+        return null;
     }
 
     /**
