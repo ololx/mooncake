@@ -36,7 +36,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>mooncake-linear-space</module>
+        <module>mooncake-math</module>
     </modules>
 
     <properties>
@@ -46,7 +46,7 @@
         <sha1/>
         <!--project versioning>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>1.9</java.version>
         <github.global.server>github</github.global.server>
         <github.maven-plugin>0.12</github.maven-plugin>
     </properties>
@@ -55,7 +55,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.mooncake</groupId>
-                <artifactId>mooncake-linear-space</artifactId>
+                <artifactId>mooncake-math</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
