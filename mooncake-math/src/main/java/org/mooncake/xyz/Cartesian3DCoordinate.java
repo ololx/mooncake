@@ -1,17 +1,13 @@
-package org.mooncake.math;
+package org.mooncake.xyz;
 
 /**
- * The interface Coordinate 2 d.
+ * The interface Coordinate 3 d.
  *
  * @author Alexander A. Kropotin
  * @project mooncake
- * @created 2021 -08-28 12:08 <p>
+ * @created 2021 -08-28 12:10 <p>
  */
-public interface CoordinateMethod2D extends CoordinateMethod {
-
-    private static double convertPolarToCartesianX(double radius, double xAngle) {
-        return radius * Math.cos(xAngle);
-    }
+public interface Cartesian3DCoordinate extends Coordinate {
 
     /**
      * Gets x.
@@ -28,6 +24,13 @@ public interface CoordinateMethod2D extends CoordinateMethod {
     double getY();
 
     /**
+     * Gets z.
+     *
+     * @return the z
+     */
+    double getZ();
+
+    /**
      * Gets radius.
      *
      * @return the radius
@@ -40,4 +43,11 @@ public interface CoordinateMethod2D extends CoordinateMethod {
      * @return the x angle
      */
     double getXAngle();
+
+    /**
+     * Gets z angle.
+     *
+     * @return the z angle
+     */
+    double getZAngle();
 }

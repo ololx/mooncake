@@ -1,6 +1,6 @@
-package org.mooncake.math.segment;
+package org.mooncake.xyz.segment;
 
-import org.mooncake.math.CoordinateMethod2D;
+import org.mooncake.xyz.Cartesian2DCoordinate;
 
 /**
  * The type Segment 2d.
@@ -9,7 +9,7 @@ import org.mooncake.math.CoordinateMethod2D;
  * @project mooncake
  * @created 2021 -08-20 22:14 <p>
  */
-public class Segment2d<P extends CoordinateMethod2D> implements LineSegment2D<P> {
+public class Segment2d<P extends Cartesian2DCoordinate> implements LineSegment2D<P> {
 
     /**
      * The X 0.

@@ -1,6 +1,6 @@
-package org.mooncake.math.point;
+package org.mooncake.xyz.point;
 
-import org.mooncake.math.CoordinateMethod3D;
+import org.mooncake.xyz.Coordinate3D;
 
 /**
  * The interface Point 3 d.
@@ -10,7 +10,7 @@ import org.mooncake.math.CoordinateMethod3D;
  * @project mooncake
  * @created 2021 -08-29 21:17 <p>
  */
-public interface Point3D<C extends CoordinateMethod3D> extends Point<C>, CoordinateMethod3D {
+public interface Point3D<C extends Coordinate3D> extends Point<C>, Coordinate3D {
 
     /**
      * Translate c.

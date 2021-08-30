@@ -1,4 +1,4 @@
-package org.mooncake.math.vector;
+package org.mooncake.xyz.vector;
 
 /**
  * The interface Vector 2.

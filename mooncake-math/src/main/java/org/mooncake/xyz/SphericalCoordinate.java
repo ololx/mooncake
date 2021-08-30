@@ -1,4 +1,4 @@
-package org.mooncake.math;
+package org.mooncake.xyz;
 
 /**
  * The interface Coordinate 3 d.
@@ -7,28 +7,7 @@ package org.mooncake.math;
  * @project mooncake
  * @created 2021 -08-28 12:10 <p>
  */
-public interface CoordinateMethod3D extends CoordinateMethod {
-
-    /**
-     * Gets x.
-     *
-     * @return the x
-     */
-    double getX();
-
-    /**
-     * Gets y.
-     *
-     * @return the y
-     */
-    double getY();
-
-    /**
-     * Gets z.
-     *
-     * @return the z
-     */
-    double getZ();
+public interface SphericalCoordinate extends Coordinate {
 
     /**
      * Gets radius.

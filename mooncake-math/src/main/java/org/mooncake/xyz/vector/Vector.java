@@ -1,6 +1,7 @@
-package org.mooncake.math.vector;
+package org.mooncake.xyz.vector;
 
-import org.mooncake.math.CoordinateMethod;
+import org.mooncake.xyz.Coordinate;
+import org.mooncake.xyz.Translatable;
 
 /**
  * The interface Vector.
@@ -10,7 +11,7 @@ import org.mooncake.math.CoordinateMethod;
  * @project mooncake
  * @created 2021 -08-17 22:13 <p>
  */
-interface Vector<V extends Vector> extends CoordinateMethod {
+interface Vector<V extends Vector> extends Coordinate, Translatable<V> {
 
     /**
      * Dot product double.

@@ -1,6 +1,6 @@
-package org.mooncake.math.segment;
+package org.mooncake.xyz.segment;
 
-import org.mooncake.math.CoordinateMethod;
+import org.mooncake.xyz.Coordinate;
 
 /**
  * The type Segment 3d.
@@ -61,12 +61,12 @@ public class Segment3d implements LineSegment3D {
     }
 
     @Override
-    public CoordinateMethod getA() {
+    public Coordinate getA() {
         return null;
     }
 
     @Override
-    public CoordinateMethod getB() {
+    public Coordinate getB() {
         return null;
     }
 

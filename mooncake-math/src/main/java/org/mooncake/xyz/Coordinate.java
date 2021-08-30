@@ -1,4 +1,4 @@
-package org.mooncake.math;
+package org.mooncake.xyz;
 
 /**
  * The interface Coordinate.
@@ -7,5 +7,5 @@ package org.mooncake.math;
  * @project mooncake
  * @created 2021 -08-28 12:07 <p>
  */
-public interface CoordinateMethod {
+public interface Coordinate {
 }
