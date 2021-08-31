@@ -90,17 +90,17 @@ public class PointXYZ implements Point3D<PointXYZ> {
 
     @Override
     public double getRadius() {
-        return this.x;
+        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
     }
 
     @Override
     public double getXAngle() {
-        return this.y;
+        return Math.atan(this.y / this.x);
     }
 
     @Override
     public double getZAngle() {
-        return this.z;
+        return Math.atan(Math.hypot(this.x, this.y) / this.z);
     }
 
     @Override

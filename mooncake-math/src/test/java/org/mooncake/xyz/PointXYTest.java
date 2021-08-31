@@ -2,13 +2,19 @@ package org.mooncake.xyz;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 import org.mooncake.xyz.point.Point2D;
 import org.mooncake.xyz.point.PointXY;
 
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 /**
  * @project mooncake
@@ -19,73 +25,53 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("The PointXYTest tests")
 public class PointXYTest {
 
-    @DisplayName("[positive]: test polar x angle calculation for the point p = (1, 0)")
-    @Test
-    public void getXAngle_getXAngleForPointXPos1Y0_returnAngle0() {
-        Point2D pointP = new PointXY(1, 0);
-        double expectedXAngle = Math.toRadians(0);
-
-        double actualXAngle = pointP.getXAngle();
-
-        assertTrue(
-                actualXAngle == expectedXAngle,
-                String.format("Expected %s, but was %s", expectedXAngle, actualXAngle)
+    static Stream<Arguments> getXAngleTestParamsProvider() {
+        return Stream.of(
+                arguments(1, 0, Math.toRadians(0)),
+                arguments(1, 1, Math.toRadians(45)),
+                arguments(0, 1, Math.toRadians(90)),
+                arguments(-1, 1, Math.toRadians(-45)),
+                arguments(-1, 0, Math.toRadians(0)),
+                arguments(-1, -1, Math.toRadians(45)),
+                arguments(0, -1, Math.toRadians(-90)),
+                arguments(1, -1, Math.toRadians(-45))
         );
     }
 
-    @DisplayName("[positive]: test polar x angle calculation for the point p = (1, 1)")
-    @Test
-    public void getXAngle_getXAngleForPointXPos1YPos1_returnAnglePos45() {
-        Point2D pointP = new PointXY(1, 1);
-        double expectedXAngle = Math.toRadians(45);
-
-        double actualXAngle = pointP.getXAngle();
-
-        assertTrue(
-                actualXAngle == expectedXAngle,
-                String.format("Expected %s, but was %s", expectedXAngle, actualXAngle)
+    static Stream<Arguments> getRadiusTestParamsProvider() {
+        return Stream.of(
+                arguments(1, 0, 1),
+                arguments(1, 1, 1.4142135623730951),
+                arguments(0, 1, 1),
+                arguments(-1, 1, 1.4142135623730951),
+                arguments(-1, 0, 1),
+                arguments(-1, -1, 1.4142135623730951),
+                arguments(0, -1, 1),
+                arguments(1, -1, 1.4142135623730951)
         );
     }
 
-    @DisplayName("[positive]: test polar x angle calculation for the point p = (0, 1)")
-    @Test
-    public void getXAngle_getXAngleForPointX0YPos1_returnAnglePos90() {
-        Point2D pointP = new PointXY(0, 1);
-        double expectedXAngle = Math.toRadians(90);
-
-        double actualXAngle = pointP.getXAngle();
+    @DisplayName("[positive]: test polar x angle calculation for the points from p1(1, 0) to p8(-1, 1) with step is 45 degree")
+    @MethodSource("getXAngleTestParamsProvider")
+    @ParameterizedTest
+    public void getXAngle_createPointByCartesianXYCoordinates_returnRightPolarXAngle(double x, double y, double expectedXAngle) {
+        double actualXAngle = new PointXY(x, y).getXAngle();
 
         assertTrue(
                 actualXAngle == expectedXAngle,
-                String.format("Expected %s, but was %s", expectedXAngle, actualXAngle)
+                String.format("Expected %s, but was %s", Math.toDegrees(expectedXAngle), Math.toDegrees(actualXAngle))
         );
     }
 
-    @DisplayName("[positive]: test polar x angle calculation for the point p = (-1, 0)")
-    @Test
-    public void getXAngle_getXAngleForPointXNeg1Y0_returnAngle0() {
-        Point2D pointP = new PointXY(-1, 0);
-        double expectedXAngle = Math.toRadians(0);
-
-        double actualXAngle = pointP.getXAngle();
+    @DisplayName("[positive]: test polar radius calculation for the points from p1(1, 0) to p8(-1, 1) with step is 45 degree")
+    @MethodSource("getRadiusTestParamsProvider")
+    @ParameterizedTest
+    public void getRadius_createPointByCartesianXYCoordinates_returnRightPolarRadius(double x, double y, double expectedRadius) {
+        double actualRadius = new PointXY(x, y).getRadius();
 
         assertTrue(
-                actualXAngle == expectedXAngle,
-                String.format("Expected %s, but was %s", expectedXAngle, actualXAngle)
-        );
-    }
-
-    @DisplayName("[positive]: test polar x angle calculation for the point p = (0, -1)")
-    @Test
-    public void getXAngle_getXAngleForPointX0YNeg1_returnAngleNeg90() {
-        Point2D pointP = new PointXY(0, -1);
-        double expectedXAngle = Math.toRadians(-90);
-
-        double actualXAngle = pointP.getXAngle();
-
-        assertTrue(
-                actualXAngle == expectedXAngle,
-                String.format("Expected %s, but was %s", expectedXAngle, actualXAngle)
+                actualRadius == expectedRadius,
+                String.format("Expected %s, but was %s", expectedRadius, actualRadius)
         );
     }
 }
