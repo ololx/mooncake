@@ -22,7 +22,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
  * <p>
  * @author Alexander A. Kropotin
  */
-@DisplayName("The PointXYTest tests")
+@DisplayName("The PointXYTest test cases")
 public class PointXYTest {
 
     static Stream<Arguments> getXAngleTestParamsProvider() {
