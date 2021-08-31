@@ -1,6 +1,6 @@
-package org.mooncake.math.point;
+package org.mooncake.xyz.point;
 
-import org.mooncake.math.CoordinateMethod2D;
+import org.mooncake.xyz.Coordinate2D;
 
 /**
  * The interface Point 2 d.
@@ -10,7 +10,7 @@ import org.mooncake.math.CoordinateMethod2D;
  * @project mooncake
  * @created 2021 -08-29 21:17 <p>
  */
-public interface Point2D<C extends CoordinateMethod2D> extends Point<C>, CoordinateMethod2D {
+public interface Point2D<C extends Coordinate2D> extends Point<C>, Coordinate2D {
 
     /**
      * Translate c.
@@ -19,5 +19,5 @@ public interface Point2D<C extends CoordinateMethod2D> extends Point<C>, Coordin
      * @param ty the ty
      * @return the c
      */
-    C translate(double tx, double ty);
+    C translate(final double tx, final double ty);
 }

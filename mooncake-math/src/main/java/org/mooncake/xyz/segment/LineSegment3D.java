@@ -1,4 +1,4 @@
-package org.mooncake.math.segment;
+package org.mooncake.xyz.segment;
 
 /**
  * The interface Line segment 3 d.

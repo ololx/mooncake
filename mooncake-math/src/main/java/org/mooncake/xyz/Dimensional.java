@@ -1,12 +1,12 @@
-package org.mooncake.math;
+package org.mooncake.xyz;
 
 /**
  * @project mooncake
- * @created 2021-08-27 20:43
+ * @created 2021-08-30 22:00
  * <p>
  * @author Alexander A. Kropotin
  */
-public interface Magnitude {
+public interface Dimensional {
 
     /**
      * This method return the length between two points.

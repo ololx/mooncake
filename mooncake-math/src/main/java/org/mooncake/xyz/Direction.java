@@ -1,4 +1,4 @@
-package org.mooncake.math;
+package org.mooncake.xyz;
 
 /**
  * @project mooncake

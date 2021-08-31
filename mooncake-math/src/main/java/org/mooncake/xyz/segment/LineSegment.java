@@ -1,7 +1,7 @@
-package org.mooncake.math.segment;
+package org.mooncake.xyz.segment;
 
-import org.mooncake.math.CoordinateMethod;
-import org.mooncake.math.Magnitude;
+import org.mooncake.xyz.Coordinate;
+import org.mooncake.xyz.Dimensional;
 
 /**
  * The interface Line segment.
@@ -11,7 +11,7 @@ import org.mooncake.math.Magnitude;
  * @project mooncake
  * @created 2021 -08-27 21:07 <p>
  */
-public interface LineSegment<P extends CoordinateMethod> {
+public interface LineSegment<P extends Coordinate> extends Dimensional {
 
     /**
      * Gets a.
@@ -26,11 +26,4 @@ public interface LineSegment<P extends CoordinateMethod> {
      * @return the b
      */
     P getB();
-
-    /**
-     * Length double.
-     *
-     * @return the double
-     */
-    double length();
 }
