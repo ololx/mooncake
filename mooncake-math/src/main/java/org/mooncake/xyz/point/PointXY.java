@@ -59,7 +59,7 @@ public class PointXY implements Point2D<PointXY> {
 
     @Override
     public double getXAngle() {
-        return Math.pow(Math.tan(this.y / this.x), -1);
+        return Math.atan(this.y / this.x);
     }
 
     @Override

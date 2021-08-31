@@ -57,12 +57,12 @@ public class Vector2d implements Vector2<Vector2d> {
         return this.y;
     }
 
-    @Override
+
     public double getRadius() {
         return 0;
     }
 
-    @Override
+
     public double getXAngle() {
         return 0;
     }
@@ -182,5 +182,10 @@ public class Vector2d implements Vector2<Vector2d> {
 
     public boolean isSame(Vector2d om) {
         return this.getX() == om.getX() && this.getY() == om.getY();
+    }
+
+    @Override
+    public Vector2d translate(Vector2d distance) {
+        return null;
     }
 }
