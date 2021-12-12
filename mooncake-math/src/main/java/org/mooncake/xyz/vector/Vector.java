@@ -8,8 +8,9 @@ import org.mooncake.xyz.Translatable;
  *
  * @param <V> the type parameter
  * @author Alexander A. Kropotin
- * @project mooncake
- * @created 2021 -08-17 22:13 <p>
+ *
+ * project mooncake
+ * created 2021 -08-17 22:13
  */
 interface Vector<V extends Vector> extends Coordinate, Translatable<V> {
 

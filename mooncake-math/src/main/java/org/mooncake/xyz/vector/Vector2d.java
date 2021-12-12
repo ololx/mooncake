@@ -4,8 +4,9 @@ package org.mooncake.xyz.vector;
  * The type Vector 2 d.
  *
  * @author Alexander A. Kropotin
- * @project mooncake
- * @created 2021 -08-17 22:14 <p>
+ *
+ * project mooncake
+ * created 2021 -08-17 22:14
  */
 public class Vector2d implements Vector2<Vector2d> {
 

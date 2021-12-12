@@ -7,8 +7,9 @@ import org.mooncake.xyz.Coordinate2D;
  *
  * @param <C> the type parameter
  * @author Alexander A. Kropotin
- * @project mooncake
- * @created 2021 -08-29 21:17 <p>
+ *
+ * project mooncake
+ * created 2021 -08-29 21:17
  */
 public interface Point2D<C extends Coordinate2D> extends Point<C>, Coordinate2D {
 

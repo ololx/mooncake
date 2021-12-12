@@ -8,8 +8,9 @@ import org.mooncake.xyz.Translatable;
  *
  * @param <C> the type parameter
  * @author Alexander A. Kropotin
- * @project mooncake
- * @created 2021 -08-29 20:10 <p>
+ *
+ * project mooncake
+ * created 2021 -08-29 20:10
  */
 public interface Point<C extends Coordinate> extends Coordinate, Translatable<C> {
 }
