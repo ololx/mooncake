@@ -1,9 +1,9 @@
 package org.mooncake.xyz;
 
 /**
- * @project mooncake
- * @created 2021-08-30 22:02
- * <p>
+ * project mooncake
+ * created 2021-08-30 22:02
+ *
  * @author Alexander A. Kropotin
  */
 public interface Translatable<T> {

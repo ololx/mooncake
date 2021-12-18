@@ -6,8 +6,9 @@ import org.mooncake.xyz.Coordinate;
  * The type Segment 3d.
  *
  * @author Alexander A. Kropotin
- * @project mooncake
- * @created 2021 -08-27 20:59 <p>
+ *
+ * project mooncake
+ * created 2021 -08-27 20:59
  */
 public class Segment3d implements LineSegment3D {
 

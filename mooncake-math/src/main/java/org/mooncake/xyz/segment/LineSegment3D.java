@@ -4,8 +4,9 @@ package org.mooncake.xyz.segment;
  * The interface Line segment 3 d.
  *
  * @author Alexander A. Kropotin
- * @project mooncake
- * @created 2021 -08-27 21:09 <p>
+ *
+ * project mooncake
+ * created 2021 -08-27 21:09
  */
 public interface LineSegment3D extends LineSegment {
 

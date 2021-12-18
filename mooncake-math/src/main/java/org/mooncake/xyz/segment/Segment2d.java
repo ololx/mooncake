@@ -6,8 +6,9 @@ import org.mooncake.xyz.Cartesian2DCoordinate;
  * The type Segment 2d.
  *
  * @author Alexander A. Kropotin
- * @project mooncake
- * @created 2021 -08-20 22:14 <p>
+ *
+ * project mooncake
+ * created 2021 -08-20 22:14
  */
 public class Segment2d<P extends Cartesian2DCoordinate> implements LineSegment2D<P> {
 

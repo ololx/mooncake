@@ -6,8 +6,9 @@ import org.mooncake.xyz.Coordinate2D;
  * The type Point xy.
  *
  * @author Alexander A. Kropotin
- * @project mooncake
- * @created 2021 -08-30 22:15 <p>
+ *
+ * project mooncake
+ * created 2021 -08-30 22:15
  */
 public class PointXY implements Point2D<PointXY> {
 

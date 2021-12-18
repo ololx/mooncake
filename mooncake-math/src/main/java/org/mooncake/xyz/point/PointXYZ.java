@@ -7,8 +7,9 @@ import org.mooncake.xyz.Coordinate3D;
  * The type Point xyz.
  *
  * @author Alexander A. Kropotin
- * @project mooncake
- * @created 2021 -08-30 22:34 <p>
+ *
+ * project mooncake
+ * created 2021 -08-30 22:34
  */
 public class PointXYZ implements Point3D<PointXYZ> {
 

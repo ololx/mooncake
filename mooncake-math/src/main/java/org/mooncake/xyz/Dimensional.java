@@ -1,9 +1,9 @@
 package org.mooncake.xyz;
 
 /**
- * @project mooncake
- * @created 2021-08-30 22:00
- * <p>
+ * project mooncake
+ * created 2021-08-30 22:00
+ *
  * @author Alexander A. Kropotin
  */
 public interface Dimensional {
