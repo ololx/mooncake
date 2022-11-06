@@ -82,7 +82,10 @@ public class Vector2d implements Vector2<Vector2d> {
     }
 
     public Vector2d normalize() {
-        return new Vector2d(this.x / this.length(), this.y / this.length());
+        return new Vector2d(
+                this.x / this.length(),
+                this.y / this.length()
+        );
     }
 
     public double dotProduct(Vector2d om) {
@@ -174,7 +177,7 @@ public class Vector2d implements Vector2<Vector2d> {
     }
 
     private double getScaled(double value, int scale) {
-        return 1d * (((int) (value * scale)) / scale);
+        return (((value * scale)) / scale);
     }
 
     private double getScaled(double value) {
