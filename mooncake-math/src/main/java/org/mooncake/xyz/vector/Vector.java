@@ -12,7 +12,7 @@ import org.mooncake.xyz.Translatable;
  * project mooncake
  * created 2021 -08-17 22:13
  */
-interface Vector<V extends Vector> extends Coordinate, Translatable<V> {
+interface Vector<V extends Vector<V>> extends Coordinate, Translatable<V> {
 
     /**
      * Dot product double.

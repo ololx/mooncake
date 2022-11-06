@@ -9,5 +9,5 @@ package org.mooncake.xyz.vector;
  * project mooncake
  * created 2021 -08-18 22:30
  */
-public interface Vector2<V extends Vector2> extends Vector<V> {
+public interface Vector2<V extends Vector2<V>> extends Vector<V> {
 }
