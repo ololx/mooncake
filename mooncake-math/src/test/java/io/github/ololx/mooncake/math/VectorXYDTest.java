@@ -70,6 +70,14 @@ public class VectorXYDTest {
 
     @MethodSource("providesXYValues")
     @ParameterizedTest
+    void length_whenMethodCalled_thenReturnVectorLength(double x, double y) {
+        final VectorXYD vector = new VectorXYD(x, y);
+
+        assertEquals(Math.hypot(x, y), vector.length());
+    }
+
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
     void normalize_whenMethodCalled_thenReturnNormalizedVector(double x, double y) {
         final VectorXYD vector = new VectorXYD(x, y);
         final VectorXYD normalizedVector = vector.normalize();
@@ -90,6 +98,5 @@ public class VectorXYDTest {
                         .asDoubleStream()
                         .mapToObj(index -> arguments(random.apply(index), random.apply(index)))
         );
-
     }
 }
