@@ -41,10 +41,11 @@ public class VectorXYDTest {
     @MethodSource("providesXYValues")
     @ParameterizedTest
     void setX_whenMethodCalled_thenSetVectorXValue(double x) {
-        final VectorXYD vector = new VectorXYD(0, 0);
+        double initialX = 31 * x - 1;
+        final VectorXYD vector = new VectorXYD(initialX, 0);
         vector.setX(x);
 
-        assertNotEquals(0, vector.getX());
+        assertNotEquals(initialX, vector.getX());
         assertEquals(x, vector.getX());
     }
 
@@ -59,10 +60,11 @@ public class VectorXYDTest {
     @MethodSource("providesXYValues")
     @ParameterizedTest
     void setY_whenMethodCalled_thenSetVectorYValue(double y) {
-        final VectorXYD vector = new VectorXYD(0, 0);
+        double initialY = 31 * y - 1;
+        final VectorXYD vector = new VectorXYD(0, initialY);
         vector.setY(y);
 
-        assertNotEquals(0, vector.getY());
+        assertNotEquals(initialY, vector.getY());
         assertEquals(y, vector.getY());
     }
 
@@ -79,7 +81,7 @@ public class VectorXYDTest {
 
     static Stream<Arguments> providesXYValues() {
         Random doubleRandom = new Random();
-        double min = 0.0, max = Double.MAX_VALUE;
+        double min = Double.MIN_VALUE, max = Double.MAX_VALUE;
         DoubleFunction<Double> random = value -> min + (max - min) * doubleRandom.nextDouble();
 
         return Stream.concat(
