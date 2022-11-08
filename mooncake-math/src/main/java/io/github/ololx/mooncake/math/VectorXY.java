@@ -20,5 +20,5 @@ public interface VectorXY<V extends VectorXY<V>> extends Vector<V> {
 
     public double getY();
 
-    public void setY(double y) ;
+    public void setY(double y);
 }

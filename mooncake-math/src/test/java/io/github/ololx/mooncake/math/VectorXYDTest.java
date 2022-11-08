@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.mooncake.xyz.vector.Vector2;
 import org.mooncake.xyz.vector.Vector2d;
 
+import java.math.BigDecimal;
 import java.util.Random;
 import java.util.function.DoubleFunction;
 import java.util.stream.IntStream;
@@ -21,27 +22,66 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
  *
  * @author Alexander A. Kropotin
  */
-@DisplayName("The VectorXYD test cases")
 public class VectorXYDTest {
 
-    @DisplayName("[positive]: test constructor of VectorXY")
     @MethodSource("providesRandomXYValues")
     @ParameterizedTest
     void new_whenConstructorCalledWithArgs_thenCreateVectorWithXY(double x, double y) {
-       final VectorXY<?> vector = new VectorXYD(x, y);
+       final VectorXYD vector = new VectorXYD(x, y);
 
        assertNotNull(vector);
        assertEquals(x, vector.getX());
        assertEquals(y, vector.getY());
     }
 
+    @MethodSource("providesRandomXYValues")
+    @ParameterizedTest
+    void getX_whenMethodCalled_thenReturnVectorXValue(double x) {
+        final VectorXYD vector = new VectorXYD(x, 0);
+
+        assertEquals(x, vector.getX());
+    }
+
+    @MethodSource("providesRandomXYValues")
+    @ParameterizedTest
+    void setX_whenMethodCalled_thenSetVectorXValue(double x) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        vector.setX(x);
+
+        assertNotEquals(0, vector.getX());
+        assertEquals(x, vector.getX());
+    }
+
+    @MethodSource("providesRandomXYValues")
+    @ParameterizedTest
+    void getY_whenMethodCalled_thenReturnVectorYValue(double y) {
+        final VectorXYD vector = new VectorXYD(0, y);
+
+        assertEquals(y, vector.getY());
+    }
+
+    @MethodSource("providesRandomXYValues")
+    @ParameterizedTest
+    void setY_whenMethodCalled_thenSetVectorYValue(double y) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        vector.setY(y);
+
+        assertNotEquals(0, vector.getY());
+        assertEquals(y, vector.getY());
+    }
+
     static Stream<Arguments> providesRandomXYValues() {
-        Random doubleRandom = new Random();
-        double min = 0.0, max = Double.MAX_VALUE;
-        DoubleFunction<Double> random = value -> min + (max - min) * doubleRandom.nextDouble();
+        DoubleFunction<Double> random = getDoubleRandomFunction();
 
         return IntStream.range(0, 20)
                 .asDoubleStream()
                 .mapToObj(index -> arguments(random.apply(index), random.apply(index)));
+    }
+
+    static DoubleFunction<Double> getDoubleRandomFunction() {
+        Random doubleRandom = new Random();
+        double min = 0.0, max = Double.MAX_VALUE;
+
+        return value -> min + (max - min) * doubleRandom.nextDouble();
     }
 }
