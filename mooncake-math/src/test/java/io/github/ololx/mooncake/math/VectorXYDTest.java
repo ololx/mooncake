@@ -1,13 +1,9 @@
 package io.github.ololx.mooncake.math;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mooncake.xyz.vector.Vector2;
-import org.mooncake.xyz.vector.Vector2d;
 
-import java.math.BigDecimal;
 import java.util.Random;
 import java.util.function.DoubleFunction;
 import java.util.stream.IntStream;
@@ -24,7 +20,7 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
  */
 public class VectorXYDTest {
 
-    @MethodSource("providesRandomXYValues")
+    @MethodSource("providesXYValues")
     @ParameterizedTest
     void new_whenConstructorCalledWithArgs_thenCreateVectorWithXY(double x, double y) {
        final VectorXYD vector = new VectorXYD(x, y);
@@ -34,7 +30,7 @@ public class VectorXYDTest {
        assertEquals(y, vector.getY());
     }
 
-    @MethodSource("providesRandomXYValues")
+    @MethodSource("providesXYValues")
     @ParameterizedTest
     void getX_whenMethodCalled_thenReturnVectorXValue(double x) {
         final VectorXYD vector = new VectorXYD(x, 0);
@@ -42,7 +38,7 @@ public class VectorXYDTest {
         assertEquals(x, vector.getX());
     }
 
-    @MethodSource("providesRandomXYValues")
+    @MethodSource("providesXYValues")
     @ParameterizedTest
     void setX_whenMethodCalled_thenSetVectorXValue(double x) {
         final VectorXYD vector = new VectorXYD(0, 0);
@@ -52,7 +48,7 @@ public class VectorXYDTest {
         assertEquals(x, vector.getX());
     }
 
-    @MethodSource("providesRandomXYValues")
+    @MethodSource("providesXYValues")
     @ParameterizedTest
     void getY_whenMethodCalled_thenReturnVectorYValue(double y) {
         final VectorXYD vector = new VectorXYD(0, y);
@@ -60,7 +56,7 @@ public class VectorXYDTest {
         assertEquals(y, vector.getY());
     }
 
-    @MethodSource("providesRandomXYValues")
+    @MethodSource("providesXYValues")
     @ParameterizedTest
     void setY_whenMethodCalled_thenSetVectorYValue(double y) {
         final VectorXYD vector = new VectorXYD(0, 0);
@@ -70,18 +66,28 @@ public class VectorXYDTest {
         assertEquals(y, vector.getY());
     }
 
-    static Stream<Arguments> providesRandomXYValues() {
-        DoubleFunction<Double> random = getDoubleRandomFunction();
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
+    void normalize_whenMethodCalled_thenReturnNormalizedVector(double x, double y) {
+        final VectorXYD vector = new VectorXYD(x, y);
+        final VectorXYD normalizedVector = vector.normalize();
 
-        return IntStream.range(0, 20)
-                .asDoubleStream()
-                .mapToObj(index -> arguments(random.apply(index), random.apply(index)));
+        assertNotEquals(vector, normalizedVector);
+        assertEquals(vector.getX() / vector.length(), normalizedVector.getX());
+        assertEquals(vector.getY() / vector.length(), normalizedVector.getY());
     }
 
-    static DoubleFunction<Double> getDoubleRandomFunction() {
+    static Stream<Arguments> providesXYValues() {
         Random doubleRandom = new Random();
         double min = 0.0, max = Double.MAX_VALUE;
+        DoubleFunction<Double> random = value -> min + (max - min) * doubleRandom.nextDouble();
 
-        return value -> min + (max - min) * doubleRandom.nextDouble();
+        return Stream.concat(
+                Stream.of(arguments(0, 0)),
+                IntStream.range(0, 20)
+                        .asDoubleStream()
+                        .mapToObj(index -> arguments(random.apply(index), random.apply(index)))
+        );
+
     }
 }

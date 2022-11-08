@@ -1,5 +1,7 @@
 package io.github.ololx.mooncake.math;
 
+import java.util.Objects;
+
 /**
  * The 2D radius vector implementation for the double type.
  * Allows the combining operations executions into one calls chain,
@@ -121,11 +123,6 @@ public class VectorXYD implements VectorXY<VectorXYD> {
         return new VectorXYD(Math.abs(this.x), Math.abs(this.y));
     }
 
-    @Override
-    public String toString() {
-        return String.format("<%s, %s>", this.getX(), this.getY());
-    }
-
     public VectorXYD clone() {
         return new VectorXYD(this.getX(), this.getY());
     }
@@ -136,5 +133,30 @@ public class VectorXYD implements VectorXY<VectorXYD> {
 
     private double getScaled(double value) {
         return this.getScaled(value, 100);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof VectorXYD)) {
+            return false;
+        }
+
+        VectorXYD other = (VectorXYD) obj;
+
+        return Double.compare(other.x, this.x) == 0 && Double.compare(other.y, this.y) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("<%s, %s>", this.getX(), this.getY());
     }
 }
