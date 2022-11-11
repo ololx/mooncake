@@ -87,6 +87,48 @@ public class VectorXYDTest {
         assertEquals(vector.getY() / vector.length(), normalizedVector.getY());
     }
 
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
+    void add_whenAddScalar_thenAddScalarToXYAndReturnNewVector(double scalar) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        final VectorXYD addedVector = vector.add(scalar);
+
+        assertEquals(vector.getX() + scalar, addedVector.getX());
+        assertEquals(vector.getY() + scalar, addedVector.getY());
+    }
+
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
+    void add_whenAddAnotherVector_thenAddTheirXYAndReturnNewVector(double x, double y) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        final VectorXYD otherVector = new VectorXYD(x, y);
+        final VectorXYD addedVector = vector.add(otherVector);
+
+        assertEquals(vector.getX() + otherVector.getX(), addedVector.getX());
+        assertEquals(vector.getY() + otherVector.getY(), addedVector.getY());
+    }
+
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
+    void subtract_whenSubtractScalar_thenSubtractScalarFromXYAndReturnNewVector(double scalar) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        final VectorXYD addedVector = vector.subtract(scalar);
+
+        assertEquals(vector.getX() - scalar, addedVector.getX());
+        assertEquals(vector.getY() - scalar, addedVector.getY());
+    }
+
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
+    void subtract_whenSubtractOtherVector_thenSubtractXYFromXYAndReturnNewVector(double x, double y) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        final VectorXYD otherVector = new VectorXYD(x, y);
+        final VectorXYD addedVector = vector.subtract(otherVector);
+
+        assertEquals(vector.getX() - otherVector.getX(), addedVector.getX());
+        assertEquals(vector.getY() - otherVector.getY(), addedVector.getY());
+    }
+
     static Stream<Arguments> providesXYValues() {
         Random doubleRandom = new Random();
         double min = Double.MIN_VALUE, max = Double.MAX_VALUE;
@@ -98,47 +140,5 @@ public class VectorXYDTest {
                         .asDoubleStream()
                         .mapToObj(index -> arguments(random.apply(index), random.apply(index)))
         );
-    }
-
-    @MethodSource("providesScalars")
-    @ParameterizedTest
-    void add_whenAddScalar_thenAddScalarToXYAndReturnNewVector(double scalar) {
-        final VectorXYD vector = new VectorXYD(0, 0);
-        final VectorXYD addedVector = vector.add(scalar);
-
-        assertEquals(vector.getX() + scalar, addedVector.getX());
-        assertEquals(vector.getY() + scalar, addedVector.getY());
-    }
-
-    static Stream<Arguments> providesScalars() {
-        Random doubleRandom = new Random();
-        double min = Double.MIN_VALUE, max = Double.MAX_VALUE;
-        DoubleFunction<Double> random = value -> min + (max - min) * doubleRandom.nextDouble();
-
-        return IntStream.range(0, 20)
-                .asDoubleStream()
-                .mapToObj(index -> arguments(random.apply(index)));
-    }
-
-    @MethodSource("providesVectors")
-    @ParameterizedTest
-    void add_whenAddAnotherVector_thenAddTheirXYAndReturnNewVector(VectorXYD otherVector) {
-        final VectorXYD vector = new VectorXYD(0, 0);
-        final VectorXYD addedVector = vector.add(otherVector);
-
-        assertEquals(vector.getX() + otherVector.getX(), addedVector.getX());
-        assertEquals(vector.getY() + otherVector.getY(), addedVector.getY());
-    }
-
-    static Stream<Arguments> providesVectors() {
-        Random doubleRandom = new Random();
-        double min = Double.MIN_VALUE, max = Double.MAX_VALUE;
-        DoubleFunction<Double> random = value -> min + (max - min) * doubleRandom.nextDouble();
-
-        return IntStream.range(0, 20)
-                .asDoubleStream()
-                .mapToObj(index -> {
-                    return arguments(new VectorXYD(random.apply(index), random.apply(index)));
-                });
     }
 }
