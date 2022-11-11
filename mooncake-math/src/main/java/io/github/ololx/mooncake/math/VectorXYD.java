@@ -45,36 +45,6 @@ public class VectorXYD implements VectorXY<VectorXYD> {
         this.y = y;
     }
 
-    public double length() {
-        return Math.hypot(this.x, this.y);
-    }
-
-    public VectorXYD normalize() {
-        return new VectorXYD(
-                this.x / this.length(),
-                this.y / this.length()
-        );
-    }
-
-    public double dotProduct(VectorXYD om) {
-        return this.x * om.getX() + this.y * om.getY();
-    }
-
-    public double getAngle(VectorXYD om) {
-        return Math.acos(this.dotProduct(om) / (this.length() * om.length()));
-    }
-
-    public double getAngleBetweenNormal(VectorXYD om) {
-        return Math.acos(this.normalize().dotProduct(om.normalize()));
-    }
-
-    public VectorXYD rotate(double angle) {
-        return new VectorXYD(
-                (this.x * Math.cos(angle) - this.y * Math.sin(angle)),
-                (this.x * Math.sin(angle) + this.y * Math.cos(angle))
-        );
-    }
-
     public VectorXYD add(VectorXYD om) {
         return new VectorXYD(
                 this.x + om.getX(),
@@ -123,16 +93,38 @@ public class VectorXYD implements VectorXY<VectorXYD> {
         return new VectorXYD(Math.abs(this.x), Math.abs(this.y));
     }
 
+    public double length() {
+        return Math.hypot(this.x, this.y);
+    }
+
+    public VectorXYD normalize() {
+        return new VectorXYD(
+                this.x / this.length(),
+                this.y / this.length()
+        );
+    }
+
+    public double dotProduct(VectorXYD om) {
+        return this.x * om.getX() + this.y * om.getY();
+    }
+
+    public double getAngle(VectorXYD om) {
+        return Math.acos(this.dotProduct(om) / (this.length() * om.length()));
+    }
+
+    public double getAngleBetweenNormal(VectorXYD om) {
+        return Math.acos(this.normalize().dotProduct(om.normalize()));
+    }
+
+    public VectorXYD rotate(double angle) {
+        return new VectorXYD(
+                (this.x * Math.cos(angle) - this.y * Math.sin(angle)),
+                (this.x * Math.sin(angle) + this.y * Math.cos(angle))
+        );
+    }
+
     public VectorXYD clone() {
         return new VectorXYD(this.getX(), this.getY());
-    }
-
-    private double getScaled(double value, int scale) {
-        return (((value * scale)) / scale);
-    }
-
-    private double getScaled(double value) {
-        return this.getScaled(value, 100);
     }
 
     @Override
@@ -147,7 +139,8 @@ public class VectorXYD implements VectorXY<VectorXYD> {
 
         VectorXYD other = (VectorXYD) obj;
 
-        return Double.compare(other.x, this.x) == 0 && Double.compare(other.y, this.y) == 0;
+        return Double.compare(other.x, this.x) == 0
+                && Double.compare(other.y, this.y) == 0;
     }
 
     @Override
