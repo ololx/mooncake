@@ -129,6 +129,27 @@ public class VectorXYDTest {
         assertEquals(vector.getY() - otherVector.getY(), addedVector.getY());
     }
 
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
+    void multiply_whenMultiplyOnScalar_thenMultiplyOnXYScalarAndReturnNewVector(double scalar) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        final VectorXYD addedVector = vector.multiply(scalar);
+
+        assertEquals(vector.getX() * scalar, addedVector.getX());
+        assertEquals(vector.getY() * scalar, addedVector.getY());
+    }
+
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
+    void multiply_whenMultiplyOnOtherVector_thenMultiplyXYFromXYAndReturnNewVector(double x, double y) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        final VectorXYD otherVector = new VectorXYD(x, y);
+        final VectorXYD addedVector = vector.multiply(otherVector);
+
+        assertEquals(vector.getX() * otherVector.getX(), addedVector.getX());
+        assertEquals(vector.getY() * otherVector.getY(), addedVector.getY());
+    }
+
     static Stream<Arguments> providesXYValues() {
         Random doubleRandom = new Random();
         double min = Double.MIN_VALUE, max = Double.MAX_VALUE;
