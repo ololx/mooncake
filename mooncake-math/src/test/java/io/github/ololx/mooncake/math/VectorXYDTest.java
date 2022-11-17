@@ -150,6 +150,27 @@ public class VectorXYDTest {
         assertEquals(vector.getY() * otherVector.getY(), addedVector.getY());
     }
 
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
+    void divide_whenDivideOnScalar_thenDivideOnXYScalarAndReturnNewVector(double scalar) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        final VectorXYD addedVector = vector.divide(scalar);
+
+        assertEquals(vector.getX() / scalar, addedVector.getX());
+        assertEquals(vector.getY() / scalar, addedVector.getY());
+    }
+
+    @MethodSource("providesXYValues")
+    @ParameterizedTest
+    void divide_whenDivideOnOtherVector_thenDivideXYFromXYAndReturnNewVector(double x, double y) {
+        final VectorXYD vector = new VectorXYD(0, 0);
+        final VectorXYD otherVector = new VectorXYD(x, y);
+        final VectorXYD addedVector = vector.divide(otherVector);
+
+        assertEquals(vector.getX() / otherVector.getX(), addedVector.getX());
+        assertEquals(vector.getY() / otherVector.getY(), addedVector.getY());
+    }
+
     static Stream<Arguments> providesXYValues() {
         Random doubleRandom = new Random();
         double min = Double.MIN_VALUE, max = Double.MAX_VALUE;
